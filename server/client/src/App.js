@@ -6,6 +6,9 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
+import  {
+  Component
+} from 'react'
 
 import SideNav, {
   Toggle,
@@ -15,14 +18,20 @@ import SideNav, {
   NavText
 } from '@trendmicro/react-sidenav';
 
+import SearchField from 'react-search-field';
+
 // Be sure to include styles at some point, probably during your bootstraping
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AddPassenger from "./components/login";
+import AddPassenger from "./components/sign-up";
 var BackImage = require('./images/juan-encalada-6mcVaoGNz1w-unsplash.jpg');
 var Logo= require('./images/bus.png');
+
+
+
+
 function App() {
   return (
      < Router >
@@ -59,8 +68,6 @@ function App() {
                                     <li><Link to="/about" className="nav-link1">  About</Link>
                                       </li>
                                     <li><Link to="/contact" className="nav-link1">  Contact Us</Link>
-                                      </li>
-                                    <li><Link to="/reload" className="nav-link1">  Reload</Link>
                                       </li>
                                     <li><Link to="/reload" className="nav-link1">  Inquery</Link>
                                       </li>
@@ -114,10 +121,25 @@ function App() {
                    </div>
               </nav>
         </div >
+      </div> 
+      < div className ="l1right" >
+          <div className="l1rightTop">topp
+           <nav className="navbar navbar-expand-lg ">
+                  <div className="collpase navbar-collapse"> 
+                      <ul id="menu">
+                        <li><a href="#"><Link to="/users/login" className="nav-link">  Sign-in</Link></a></li>
+                        <li><a href="#"><Link to="/users/register" className="nav-link">  Sign-up</Link></a></li>
+  
+                    </ul>
+                </div>
+              </nav>                       
+          </div>
+
+          <div className="l1rightBottom">bottom
+          </div>  
+
       </div>
-      <div className="l1right">right</div>
-    
-    
+
     </div >
     
 
@@ -131,11 +153,11 @@ function App() {
                                     < li className = "navbar-item2" > < Link to = "/about"
                                     className = "nav-link" > About </Link>
                                       </li>
-                                    <li><Link to="/contact" className="nav-link">  Contact Us</Link>
+                                    < li className = "navbar-item2" > < Link to = "/contact"
+                                    className = "nav-link" > Contact Us </Link>
                                       </li>
-                                    <li><Link to="/reload" className="nav-link">  Reload</Link>
-                                      </li>
-                                    <li><Link to="/reload" className="nav-link">  Inquery</Link>
+                                    <li className = "navbar-item2"><Link to="/inquery" 
+                                    className="nav-link">  Inquery</Link>
                                       </li>
 
                               < div class = "dropdown" >

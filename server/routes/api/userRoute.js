@@ -41,8 +41,14 @@ userRouter.post("/register", (req, res) => {
                     newUser.password = hash;
                     newUser
                         .save()
-                        .then(user => res.json(user))
-                        .catch(err => console.log(err));
+                        .then(assign => {
+                             res.status(200).json({
+                                    'Passenger': 'Passenger added succesfully'
+                                });
+                            })
+                            .catch(err => {
+                                res.status(400).send('adding the passenger failed');
+                            });
                 });
             });
         }

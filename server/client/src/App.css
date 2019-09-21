@@ -11,52 +11,47 @@
           background-repeat: 'no-repeat';
 }
 
-.navbar{
-   padding: 0px;
-   margin:0px;
-}
+/* Level 1 header  */
 
-.ul {
-   padding: 0px;
-   margin:0px;
-}
-.level1{
+.level1 {
   border: solid rgb(160, 160, 160);
   display: flex;
-  padding:0px;
-  margin:0px;
+  padding: 0px;
+  margin: 0px;
   text-decoration: none;
-  width :100%;
+  width: 100%;
   height: 150px;
-   background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   margin-bottom: 0px;
   padding: 0px;
-  color:white;
+  color: white;
 }
 
+
+/* level1 > left block*/
 .l1left {
   flex: 0 0 20%;
-   border: solid 0px;
-   text-align: center;
-   background-color: rgba(0, 0, 0, 0.7);
+  border: solid 0px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
 }
-.l1center{
+/* level1 > center block*/
 
+.l1center {
   flex: 0 0 60%;
-   border: solid;
-   text-align: center;
-   padding: 0px;
-   margin:0px;
+  border: solid;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
 }
 
-.l1right {
-  flex: 0 0 20%;
-   border: solid;
-}
+/* level1 > center > top & bottom */
+
 
 .l1Top{
   height:60%;
    background-color: rgba(0, 0, 0, 0.3);
+   border: solid 
 
 }
 .l1Bottom {
@@ -64,10 +59,33 @@
 
 }
 
+/*level1 > right block*/
+.l1right{
+  flex: 0 0 20%;
+  text-align: center;
+  padding: 0px;
+  margin:0px;
+  border :1px solid rgb(43, 38, 38);
+
+}
+
+.l1rightTop {
+  height: 60%;
+  background-color: rgba(0, 0, 0, 0.3);
+   border :1px solid rgb(43, 38, 38);
+
+}
+
+.lright1Bottom {
+  background-color: rgba(0, 0, 0, 0.3);
+   border :1px solid rgb(43, 38, 38);
+}
+
 .level2 {
 display: flex;
   padding:0px;
   margin:0px;
+  min-height: 600px;
 
 
 }
@@ -119,15 +137,24 @@ li.navbar-item1 {
 }
 
 
-i.navbar-item2 {
+li.navbar-item2 {
+
+  position:relative;
   display: block;
   border: 1px solid rgb(43, 38, 38);
   margin-left: 1px;
   margin-bottom: 1px;
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
+  color :white;
   
 }
+
+    a:link {
+      color: green;
+      background-color: transparent;
+      text-decoration: none;
+    }
 
 
 li a{
@@ -151,6 +178,34 @@ li a{
     text-align: center;
     padding: 10px;
     text-decoration: none;
+}
+
+
+.nav-link2 a{
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 1px;
+  margin-bottom: 1px;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+
+
+.nav-link2 a:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 1px;
+  margin-bottom: 1px;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.menu li a {
+    color:green;
 }
 
 a:hover {

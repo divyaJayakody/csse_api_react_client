@@ -32,7 +32,8 @@ userRouter.post("/register", (req, res) => {
                 email: req.body.email,
                 password: req.body.password,
                 nic:req.body.nic,
-                telephone:req.body.telephone
+                telephone:req.body.telephone,
+                accountBal:2500
             }); 
             // Hash password before saving in database
             bcrypt.genSalt(10, (err, salt) => {
@@ -93,6 +94,11 @@ userRouter.post("/login", (req, res) => {
                             success: true,
                             token: "Bearer " + token
                         });
+                        res.status(200)
+                            .json({
+                                passwordincorrect: "Password incorrect"
+                            });
+
                     }
                 );
             } else {

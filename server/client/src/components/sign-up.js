@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     FormErrors
 } from './FormErrors';
+var BackImage = require('../images/juan-encalada-6mcVaoGNz1w-unsplash.jpg');
 
 
 
@@ -185,9 +186,10 @@ export default class AddPassenger extends Component {
              axios.post('http://localhost:3001/api/users/register', newPassenger)
         ])
             .then(axios.spread((res) => {
-                if (res.status === 200)
+                if (res.status === 200){
                     alert("Passenger added Succesfully!");
-                else if (res.status === 400)
+                    this.props.history.push('/');
+                }else if (res.status === 400)
                     alert("failed");
                 else if (res.status === 401)
                     alert("failed");
@@ -214,7 +216,19 @@ export default class AddPassenger extends Component {
 
     render(){
         return(
-            <div className ="formContainer" style={{marginTop:10}}>
+            <div className="SignUpPage"
+             style = {
+                 {
+                     height: 800,
+                     backgroundImage: 'url(' + BackImage + ')',
+                     backgroundPosition: 'center',
+                     backgroundSize: 'cover',
+                     backgroundRepeat: 'no-repeat',
+                     flex: 1,
+                     paddingTop:70
+                 }
+             } >
+            <div className ="formContainer" >
                 <div className = "formWrapper">
                 <h3>Add Passenger</h3>
                 <form onSubmit={this.onSubmit}>
@@ -274,6 +288,7 @@ export default class AddPassenger extends Component {
                     </div>
                 </form>
                 </div>
+            </div>
             </div>
         )
     }

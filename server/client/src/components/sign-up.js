@@ -196,13 +196,8 @@ export default class AddPassenger extends Component {
                 else
                     alert("failed !");
                 console.log(res);
-               
-
             }));
-
-        
-
-
+            
         this.setState({
 
             pass_name:'',

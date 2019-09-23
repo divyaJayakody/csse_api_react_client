@@ -11,7 +11,7 @@ const cors = require('cors');
 const methodOverride = require('method-override');
 const passport = require("passport");
 const userRoute = require("./routes/api/userRoute");
-
+const driverRoute = require("./routes/api/driverRoute");
 
 //middleware
 app.use(cors());
@@ -52,7 +52,7 @@ app.use(logger('dev'));
 
 //app.use('/instructor', require('./routes/instructor.route'));
 app.use("/api/users", userRoute);
-
+app.use("/api/drivers", driverRoute);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'));

@@ -27,6 +27,7 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddPassenger from "./components/sign-up";
+import AddDriver from "./components/add_driver";
 import Login from "./components/login";
 import Home from "./components/home";
 
@@ -43,6 +44,7 @@ function App() {
               <div>{Login}</div>
 
               <Route path="/users/register" exact component={AddPassenger}/>
+              <Route path="/drivers/register" exact component={AddDriver}/>             
               <Route path="/" exact component={Login}/>  
               <Route path="/home" exact component={Home}/>  
     </Router>

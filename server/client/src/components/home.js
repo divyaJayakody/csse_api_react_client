@@ -26,6 +26,7 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddPassenger from "./sign-up";
+import AddDriver from "./add_driver";
 import Login from "./login";
 var BackImage = require('../images/juan-encalada-6mcVaoGNz1w-unsplash.jpg');
 var Logo= require('../images/bus.png');
@@ -227,7 +228,10 @@ function Home() {
           < div className = "main-body">
         < div className = "container" >
               <Route path="/users/register" exact component={AddPassenger}/>
-              <Route path="/" exact component={Login}/>        
+              <Route path="/drivers/register" exact component={AddDriver}/>
+              
+              <Route path="/" exact component={Login}/> 
+
         </div>
     
       </div> 

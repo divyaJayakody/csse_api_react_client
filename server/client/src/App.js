@@ -1,24 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from "react-router-dom";
 import './App.css';
-import  {
-  Component
-} from 'react'
 
-import SideNav, {
-  Toggle,
-  Nav,
-  NavItem,
-  NavIcon,
-  NavText
-} from '@trendmicro/react-sidenav';
-
-import SearchField from 'react-search-field';
 
 
 // Be sure to include styles at some point, probably during your bootstraping

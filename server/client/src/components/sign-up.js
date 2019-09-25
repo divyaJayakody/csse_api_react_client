@@ -32,19 +32,14 @@ export default class AddPassenger extends Component {
             pass_password2: '',
             pass_nic: '',
             pass_telephone: '',
-            formErrors: {
+            errors: {
                     pass_name: '',
                     pass_email: '',
                     pass_password: '',
                     pass_password2: '',
                     pass_nic: '',
                     pass_telephone: '',
-                },
-                pass_nameValid: false,
-                pass_emailValid: false,
-                pass_password: false,
-                pass_nic: false,
-                pass_telephone: false,
+                }
         }
 
     }
@@ -94,46 +89,6 @@ export default class AddPassenger extends Component {
     handleUserInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        this.setState({
-                [name]: value
-            },
-            () => {
-                this.validateField(name, value)
-            });
-    }
-
-    validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
-        let passwordValid = this.state.passwordValid;
-
-        switch (fieldName) {
-            case 'pass_email':
-                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-                break;
-            case 'pass_password':
-                passwordValid = value.length >= 6;
-                fieldValidationErrors.password = passwordValid ? '' : ' is too short';
-                break;
-            default:
-                break;
-        }
-        this.setState({
-            formErrors: fieldValidationErrors,
-            emailValid: emailValid,
-            passwordValid: passwordValid
-        }, this.validateForm);
-    }
-
-    validateForm() {
-        this.setState({
-            formValid: this.state.emailValid && this.state.passwordValid
-        });
-    }
-
-    errorClass(error) {
-        return (error.length === 0 ? '' : 'has-error');
     }
 
     
@@ -238,14 +193,14 @@ export default class AddPassenger extends Component {
                     </div>
                     <div className="form-group">
                         < label > Email: </label>
-                        <input type ="text"
+                        <input type ="email"
                                className="form-control"
                                value={this.state.pass_email}
                                onChange={this.onChangeSubmissionPassEmail}
                         />
                     </div>
                         <div className="form-group">
-                        < label > Password: </label>
+                        < label > Password: <small>Password should be six characters in length</small> </label>
                         <input type ="password"
                                className="form-control"
                                value={this.state.pass_password}

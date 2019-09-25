@@ -8,9 +8,8 @@ import {
     Component
 } from 'react'
 import axios from 'axios';
-import App from '../App';
 import '../App.css';
-import AddPassenger from "./sign-up";
+
 
 var BackImage = require('../images/juan-encalada-6mcVaoGNz1w-unsplash.jpg');
 

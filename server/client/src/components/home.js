@@ -5,19 +5,7 @@ import {
   Link
 } from "react-router-dom";
 import '../App.css';
-import  {
-  Component
-} from 'react'
 
-import SideNav, {
-  Toggle,
-  Nav,
-  NavItem,
-  NavIcon,
-  NavText
-} from '@trendmicro/react-sidenav';
-
-import SearchField from 'react-search-field';
 
 
 // Be sure to include styles at some point, probably during your bootstraping
@@ -25,8 +13,14 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 import AddPassenger from "./sign-up";
+import AddBusOwner from "./add_bus_owner";
 import AddDriver from "./add_driver";
+import AddBus from "./add_bus";
+import AddRoute from "./add_routes";
+import AddTTable from "./add_ttable";
 import Login from "./login";
 var BackImage = require('../images/juan-encalada-6mcVaoGNz1w-unsplash.jpg');
 var Logo= require('../images/bus.png');
@@ -94,7 +88,7 @@ function Home() {
                               <button class="dropbtn">Finance</button>
                                 <div class="dropdown-content">
                                   <li className="navbar-item2">
-                                  <Link to="/routes/register" className="nav-link1">Add Rotes</Link>
+                                  <Link to="/routes/register" className="nav-link1">Add Routes</Link>
                                     </li>
                                   <li className="navbar-item2">
                                   <Link to="/transit/register" className="nav-link1">Add Transit</Link>
@@ -130,6 +124,10 @@ function Home() {
                                   <li className="navbar-item2">
                                   <Link to="/buses/view" className="nav-link1">View Buses</Link>
                                      </li>
+                                  <li className="navbar-item2">
+                                  <Link to="/busOwners/register" className="nav-link1">Add Bus Owners</Link>
+                                     </li>
+
                                   <li className="navbar-item2">
                                   <Link to="/drivers/register" className="nav-link1">Add Drivers</Link>
                                      </li>   
@@ -181,7 +179,7 @@ function Home() {
                               <button class="dropbtn">Finance</button>
                                 <div class="dropdown-content">
                                   <li className="navbar-item2">
-                                  <Link to="/routes/register" className="nav-link">Add Rotes</Link>
+                                  <Link to="/routes/register" className="nav-link">Add Routes</Link>
                                     </li>
                                   <li className="navbar-item2">
                                   <Link to="/transit/register" className="nav-link">Add Transit</Link>
@@ -217,6 +215,10 @@ function Home() {
                                   <li className="navbar-item2">
                                   <Link to="/buses/view" className="nav-link">View Buses</Link>
                                      </li>
+                                   <li className="navbar-item2">
+                                  <Link to="/busOwners/register" className="nav-link">Add Bus Owners</Link>
+                                     </li>
+
                                   <li className="navbar-item2">
                                   <Link to="/drivers/register" className="nav-link">Add drivers</Link>
                                      </li>   
@@ -229,7 +231,10 @@ function Home() {
         < div className = "container" >
               <Route path="/users/register" exact component={AddPassenger}/>
               <Route path="/drivers/register" exact component={AddDriver}/>
-              
+              <Route path = "/busOwners/register" exact component={AddBusOwner} />
+              <Route path = "/buses/register" exact component={AddBus}/>
+              <Route path = "/routes/register" exact component={AddRoute}/>
+               <Route path = "/ttables/register" exact component={AddTTable}/>
               <Route path="/" exact component={Login}/> 
 
         </div>

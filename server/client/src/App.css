@@ -147,13 +147,56 @@ display: flex;
 .formContainer {
   
   color :white;
-   width: 50%;
-   margin: 0 auto;
+  width: 50%;
+  margin: 0 auto;
   width: 400px;
 }
 
+.formContainerMain {
+  display: flex;
+  color: white;
+  width: 100%;
+  width: 400px;
+  
+}
+
+.formContainer1{
+   flex: 0 0 33.3%;
+   border:1px solid black;
+   background-color: rgba(0, 0, 0, 0.3);
+}
+.formContainer2{
+  flex: 0 0 33.3%;
+  border:1px solid black;
+  background-color: rgba(0, 0, 0, 0.3);
+}
 
 
+.formContainer3 {
+  flex: 0 0 33.3%;
+  border:1px solid black;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.Transit{
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  width: 100%;
+}
+ .inputTransit{
+    flex: 0 0 70%;
+    padding:0;
+    margin:0;
+
+ }
+.inputTransitButton{
+    flex: 0 0 30%;
+}
+
+.btn-primary{
+  width :200px}
 
 li.navbar-item2 {
 

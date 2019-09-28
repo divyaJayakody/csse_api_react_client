@@ -30,7 +30,7 @@ driverRouter.post("/register", (req, res) => {
             });
             })
              .catch(err => {
-                res.status(400).send('adding the passenger failed');
+                res.status(400).send('Adding the passenger failed');
                 });      
                 
                 /*
@@ -39,5 +39,30 @@ driverRouter.post("/register", (req, res) => {
                 
                 */                 
  });
+
+ //Developed by Kumara K.B.A.R.T.
+ driverRouter.put("/update/driver:id", (req, res) => {
+
+    User.findById(req.params.id, function (err, Driver) {
+        if (!Driver) {
+            res.status(404).send('Driver Not Found');
+        } else {
+
+            Driver.name = req.body.name;
+            Driver.telephone = req.body.telephone;
+            Driver.nic = req.body.nic;
+
+            Driver.save().then(assign =>{
+                res.json('Updated');
+            })
+                .catch(err => {
+                    res.status(400).send('Driver Profile not Updated')
+                })
+
+
+        }
+
+    });
+});
 
 module.exports = driverRouter;

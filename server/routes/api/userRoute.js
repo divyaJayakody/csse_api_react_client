@@ -6,7 +6,7 @@ const keys = require("../../config/keys"); // Load input validation
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login"); // Load User model
 const User = require("../../models/User");
-var randomize  = require("randomatic");
+var randomize = require("randomatic");
 
 // @route POST api/users/register
 // @desc Register user
@@ -31,10 +31,10 @@ userRouter.post("/register", (req, res) => {
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
-                nic:req.body.nic,
-                telephone:req.body.telephone,
-                accountBal:2500
-            }); 
+                nic: req.body.nic,
+                telephone: req.body.telephone,
+                accountBal: 2500
+            });
             // Hash password before saving in database
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -43,13 +43,13 @@ userRouter.post("/register", (req, res) => {
                     newUser
                         .save()
                         .then(assign => {
-                             res.status(200).json({
-                                    'Passenger': 'Passenger added succesfully'
-                                });
-                            })
-                            .catch(err => {
-                                res.status(400).send('adding the passenger failed');
+                            res.status(200).json({
+                                'Passenger': 'Passenger added succesfully'
                             });
+                        })
+                        .catch(err => {
+                            res.status(400).send('adding the passenger failed');
+                        });
                 });
             });
         }
@@ -87,8 +87,8 @@ userRouter.post("/login", (req, res) => {
                 jwt.sign(
                     payload,
                     keys.secretOrKey, {
-                        expiresIn: 31556926 // 1 year in seconds
-                    },
+                    expiresIn: 31556926 // 1 year in seconds
+                },
                     (err, token) => {
                         res.json({
                             success: true,
@@ -109,6 +109,30 @@ userRouter.post("/login", (req, res) => {
                     });
             }
         });
+    });
+});
+//Developed by Kumara K.B.A.R.T.
+userRouter.put("/update/user:id", (req, res) => {
+
+    User.findById(req.params.id, function (err, User) {
+        if (!User) {
+            res.status(404).send('User Not Found');
+        } else {
+
+            User.name = req.body.name;
+            User.telephone = req.body.telephone;
+            User.nic = req.body.nic;
+
+            User.save().then(assign =>{
+                res.json('Updated');
+            })
+                .catch(err => {
+                    res.status(400).send('User Profile not Updated')
+                })
+
+
+        }
+
     });
 });
 

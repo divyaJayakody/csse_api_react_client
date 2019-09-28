@@ -5,155 +5,90 @@ import {
     Link
 } from 'react-router-dom';
 import axios from 'axios';
-
 import '../App.css';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 var BackImage = require('../images/juan-encalada-6mcVaoGNz1w-unsplash.jpg');
-
-
-
-export default class AddRoute extends Component {
-
+export default class UpdateRoute extends Component {
     constructor(props) {
         super(props);
         this.onChangeSubmissionRouteStartPoint = this.onChangeSubmissionRouteStartPoint.bind(this);
         this.onChangeSubmissionRouteEndPoint = this.onChangeSubmissionRouteEndPoint.bind(this);
         this.onChangeSubmissionRouteNumber = this.onChangeSubmissionRouteNumber.bind(this);
      
-
         this.state = {
-            route_startpoint: '',
-            route_endpoint: '',
-            route_number: '' ,
-            route_transits:[]
-
+            startpoint: '',
+            endpoint: '',
+            routeNumber: '' ,
+            transits:[]
         }
-
     }
-
-
+    componentDidMount() {
+        console.log('getting http://localhost:3001/api/routes/' + this.props.match.params.id);
+        axios.get('http://localhost:3001/api/routes/' + this.props.match.params.id)
+            .then(res => {
+                this.setState({
+                    startpoint: res.data.startpoint,
+                    endpoint: res.data.endpoint,
+                    routeNumber: res.data.routeNumber,
+                    transitArray: res.data.transitArray
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
     onChangeSubmissionRouteStartPoint(e) {
         this.setState({
-
-            route_startpoint: e.target.value
+            startpoint: e.target.value
         });
     }
     onChangeSubmissionRouteEndPoint(e) {
         this.setState({
-
-            route_endpoint: e.target.value
+            endpoint: e.target.value
         });
     }
     onChangeSubmissionRouteNumber(e) {
      this.setState({
-
-         route_number: e.target.value
+         routeNumber: e.target.value
      });     
     }
-
-
-    addTransit(e){
+    updateTransit(e){
         e.preventDefault();
         this.setState({ 
-            route_transits: [...this.state.route_transits,""]
+            transits: [...this.state.transits,""]
         })
     }
-
     handleChange(e,index){
         e.preventDefault();
-        this.state.route_transits[index] =e.target.value
-        this.setState({route_transits:this.state.route_transits})
+        this.state.transits[index] =e.target.value
+        this.setState({transits:this.state.transits})
     }
-
     handleRemove(e,index) {
         e.preventDefault();
-        this.state.route_transits.splice(index,1)
-        console.log(this.state.route_transits,".....")
+        this.state.transits.splice(index,1)
+        console.log(this.state.transits,".....")
         this.setState({
-            route_transits: this.state.route_transits
+            transits: this.state.transits
         })
     }
-
-
-
-    addRoute(e) {
-
-        e.preventDefault();
-
-        console.log(`Form Submitted:`);
-        console.log(`route startpoint:${this.state.route_startpoint}`);
-        console.log(`route  endpoint:${this.state.route_endpoint}`);
-        console.log(`route  number:${this.state.route_number}`);
-        console.log(`route  transit:${this.state.route_transits}`);
-        
-        const newroute = {
-
-            rid: '',
-            startpoint: this.state.route_startpoint,
-            endpoint: this.state.route_endpoint,
-            routeNumber: this.state.route_number,
-            transitArray: this.state.route_transits,
-            date: ''
-
-            
-        };
-
-        axios.all([
-                axios.post('http://localhost:3001/api/routes/register', newroute)
-            ])
-            .then(axios.spread((res) => {
-                if (res.status === 200) {
-                    alert("route added Succesfully!");
-                    this.props.history.push('/home');
-                } else if (res.status === 400)
-                    alert("failed");
-                else if (res.status === 401)
-                    alert("failed");
-                else
-                    alert("failed !");
-                console.log(res);
-
-
-            }));
-
-
-
-
-        this.setState({
-                route_startpoint: '',
-                route_endpoint: '',
-                route_number: '',
-                route_transits: []
-
-            
-        })
-    }
-
+  
      updateRoute(e) {
-
          e.preventDefault();
-
          console.log(`Form Submitted:`);
-         console.log(`route startpoint:${this.state.route_startpoint}`);
-         console.log(`route  endpoint:${this.state.route_endpoint}`);
-         console.log(`route  number:${this.state.route_number}`);
-         console.log(`route  transit:${this.state.route_transits}`);
-
+         console.log(`route startpoint:${this.state.startpoint}`);
+         console.log(`route  endpoint:${this.state.endpoint}`);
+         console.log(`route  routeNumber:${this.state.routeNumber}`);
+         console.log(`route  transit:${this.state.transits}`);
          const newroute = {
-
     
-             startpoint: this.state.route_startpoint,
-             endpoint: this.state.route_endpoint,
-             routeNumber: this.state.route_number,
-             transitArray: this.state.route_transits,
+             startpoint: this.state.startpoint,
+             endpoint: this.state.endpoint,
+             routeNumber: this.state.routeNumber,
+             transitArray: this.state.transits,
              
-
-
          };
-
          axios.all([
-                 axios.post('http://localhost:3001/api/routes/update', newroute)
+                 axios.post('http://localhost:3001/api/routes/update/' + this.props.match.params.id, newroute)
              ])
              .then(axios.spread((res) => {
                  if (res.status === 200) {
@@ -166,37 +101,45 @@ export default class AddRoute extends Component {
                  else
                      alert("failed !");
                  console.log(res);
-
-
              }));
-
-
-
-
          this.setState({
-                route_startpoint: '',
-                 route_endpoint: '',
-                 route_number: '',
-                 route_transits: []
-
-
+                startpoint: '',
+                 endpoint: '',
+                 routeNumber: '',
+                 transits: []
          })
-     }
-
-
+        }
+    deleteBus(e) {
+        e.preventDefault();
+        const id = this.props.match.params.id;
+        const bid_ = this.props.match.params.bid;
+        console.log(bid_);
+        const bid = this.props.match.params.bid;
+        console.log("recieved objcet id " + id)
+        axios.all([
+            axios.delete('http://localhost:3001/api/routes/remove/' + id + '')
+        ])
+        alert("Route deleted Succesfully!");
+        this.props.history.push('/home');
+          this.setState({
+              startpoint: '',
+              endpoint: '',
+              routeNumber: '',
+              transits: []
+          })
+    }
     render() {
         return ( 
             <div className="SignUpPage">
             <div className ="formContainer" >
                 <div className = "formWrapper">
-                <h3>Add Router</h3>
+                <h3>Manage Route</h3>
                 <form >
-
                     <div className="form-group">
                         <label>Start Point :</label>
                         <input type ="text"
                                className="form-control"
-                               value={this.state.route_startpoint}
+                               value={this.state.startpoint}
                                onChange={this.onChangeSubmissionRouteStartPoint}
                         />
                     </div>
@@ -204,23 +147,22 @@ export default class AddRoute extends Component {
                         < label >End Point: </label>
                         <input type ="text"
                                className="form-control"
-                               value={this.state.route_endpoint}
+                               value={this.state.endpoint}
                                onChange={this.onChangeSubmissionRouteEndPoint}
                         />
                     </div>
                      <div className="form-group">
-                        < label >Route Number: </label>
+                        < label >Route routeNumber: </label>
                         < input type ="text"
                                className="form-control"
-                               value={this.state.route_number}
+                               value={this.state.routeNumber}
                                onChange={this.onChangeSubmissionRouteNumber}
                         />
                     </div>
                     <div className="formContainer1">
                         < label >Transits: </label>
-
                          {
-                             this.state.route_transits.map((transit,index)=>{
+                             this.state.transits.map((transit,index)=>{
                                 return (
                                     <div className="Transit" key={index}>
                                         <div className="inputTransit">                      
@@ -238,18 +180,16 @@ export default class AddRoute extends Component {
               
                                     </div>    
                                 )
-
                          })
                          }
                         
                     </div>
-                    <button onClick={(e)=>this.addTransit(e)} className="btn btn-primary">Add Transits</button>
+                    <button onClick={(e)=>this.updateTransit(e)} className="btn btn-primary">Add Transits</button>
                     <div style={{marginBottom:30}}></div>
-
                     <div className="form-group">
-                       <button onClick={this.addRoute.bind(this)}  className="btn btn-success" style={{marginRight:25,width:175 }} >Add</button>
-                        <button onClick={this.updateRoute.bind(this)}  className="btn btn-success" style={{marginLeft:25,width:175}}>Update</button>
-                      </div>
+                       <button onClick={this.updateRoute.bind(this)}  className="btn btn-success" style={{marginRight:25,width:175 }} >Add</button>
+                        <button onClick={this.deleteBus.bind(this)}  className="btn btn-danger" style={{marginLeft:25,width:175}}>Delete</button>
+                     </div>
                 </form>
                 </div>
             </div>

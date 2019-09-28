@@ -10,8 +10,16 @@ const app = express();
 const cors = require('cors');
 const methodOverride = require('method-override');
 const passport = require("passport");
-const userRoute = require("./routes/api/userRoute");
+
+
+const adminRoute = require("./routes/api/adminRoute");
 const driverRoute = require("./routes/api/driverRoute");
+const busOwnerRoute = require("./routes/api/busOwnerRoute");
+const busRoute = require("./routes/api/busRoute");
+const fareRoute = require("./routes/api/fareRoute");
+const routeRoute = require("./routes/api/routeRoute");
+const timeTableRoute = require("./routes/api/timeTableRoute");
+
 
 //middleware
 app.use(cors());
@@ -51,8 +59,14 @@ app.use(logger('dev'));
 // Put all API endpoints under '/api'
 
 //app.use('/instructor', require('./routes/instructor.route'));
-app.use("/api/users", userRoute);
+app.use("/api/admins", adminRoute);
 app.use("/api/drivers", driverRoute);
+app.use("/api/owners", busOwnerRoute);
+app.use("/api/buses", busRoute);
+app.use("/api/fares", fareRoute);
+app.use("/api/routes", routeRoute);
+app.use("/api/ttables", timeTableRoute);
+
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'));

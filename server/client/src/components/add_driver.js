@@ -6,9 +6,7 @@ import axios from 'axios';
 import '../App.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-    FormErrors
-} from './FormErrors';
+
 var BackImage = require('../images/juan-encalada-6mcVaoGNz1w-unsplash.jpg');
 
 
@@ -23,8 +21,7 @@ export default class AddDriver extends Component {
         this.onChangeSubmissionPassAge = this.onChangeSubmissionPassAge.bind(this);
         this.onChangeSubmissionPassNic = this.onChangeSubmissionPassNic.bind(this);
         this.onChangeSubmissionPassLicense = this.onChangeSubmissionPassLicense.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
+        
         this.state = {
             pass_name: '',
             pass_address: '',
@@ -76,7 +73,7 @@ export default class AddDriver extends Component {
         });
     }
 
-    onSubmit(e) {
+    addDriver(e) {
 
         e.preventDefault();
 
@@ -133,6 +130,63 @@ export default class AddDriver extends Component {
         })
     }
 
+
+     updateDriver(e) {
+
+         e.preventDefault();
+
+         console.log(`Form Submitted:`);
+         console.log(`Driver name:${this.state.pass_name}`);
+         console.log(`Driver  address:${this.state.pass_address}`);
+         console.log(`Driver  age:${this.state.pass_age}`);
+         console.log(`Driver  telephone:${this.state.pass_telephone}`);
+         console.log(`Driver license:${this.state.pass_license}`);
+         console.log(`Driver nic:${this.state.pass_nic}`);
+
+         const newDriver = {
+
+             did: '',
+             name: this.state.pass_name,
+             address: this.state.pass_address,
+             age: this.state.pass_age,
+             telephone: this.state.pass_telephone,
+             date: '',
+             nic: this.state.pass_nic,
+             license: this.state.pass_license,
+
+         };
+
+         axios.all([
+                 axios.post('http://localhost:3001/api/drivers/register', newDriver)
+             ])
+             .then(axios.spread((res) => {
+                 if (res.status === 200) {
+                     alert("Driver added Succesfully!");
+                     this.props.history.push('/home');
+                 } else if (res.status === 400)
+                     alert("failed");
+                 else if (res.status === 401)
+                     alert("failed");
+                 else
+                     alert("failed !");
+                 console.log(res);
+
+
+             }));
+
+
+
+
+         this.setState({
+
+             pass_name: '',
+             pass_address: '',
+             pass_age: '',
+             pass_license: '',
+             pass_nic: '',
+             pass_telephone: ''
+         })
+     }
     render() {
         return ( 
             <div className="SignUpPage">
@@ -192,7 +246,9 @@ export default class AddDriver extends Component {
                     </div>
 
                     <div className="form-group">
-                        <input type="submit" value = "Add Driver" className="btn btn-primary" />
+                       <button onClick={this.addDriver.bind(this)}  className="btn btn-success" style={{marginRight:25,width:175 }} >Add</button>
+                        <button onClick={this.updateDriver.bind(this)}  className="btn btn-success" style={{marginLeft:25,width:175}}>Update</button>
+                   
                     </div>
                 </form>
                 </div>

@@ -2,6 +2,11 @@
 
 const DriverSchema = new mongoose.Schema(
     {
+
+         did: {
+             type: String,
+
+         },
         name: {
             type : String,
             

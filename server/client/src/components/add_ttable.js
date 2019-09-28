@@ -5,75 +5,94 @@ import {
     Link
 } from 'react-router-dom';
 import axios from 'axios';
-
 import '../App.css';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-    FormErrors
-} from './FormErrors';
 var BackImage = require('../images/juan-encalada-6mcVaoGNz1w-unsplash.jpg');
 
-
-
 export default class AddTTable extends Component {
-
     constructor(props) {
         super(props);
         this.onChangeSubmissionRouteNumber = this.onChangeSubmissionRouteNumber.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
+        this.onChangeSubmissionStartPoint = this.onChangeSubmissionStartPoint.bind(this);
+        this.onChangeSubmissionEndPoint = this.onChangeSubmissionEndPoint.bind(this);
         this.state = {
             route_number: '' ,
-            tt_day:[],
+            startpoint:'',
             tt_arrival:[],
-            tt_depart:[]
-
+            tt_depart:[],
+            endpoint:'',
+            tt_arrival_:[],
+            tt_depart_:[]
         }
-
     }
-
-
 
     onChangeSubmissionRouteNumber(e) {
      this.setState({
-
          route_number: e.target.value
      });     
     }
 
-
-    addTransit(){
-        this.setState({ 
-            tt_day: [...this.state.tt_day,""]
-        })
+    onChangeSubmissionStartPoint(e) {
+        this.setState({
+            startpoint: e.target.value
+        });
     }
 
-    addArrival() {
+     onChangeSubmissionEndPoint(e) {
+         this.setState({
+             endpoint: e.target.value
+         });
+     }
+
+    addArrival(e) {
+        e.preventDefault();
         this.setState({
             tt_arrival: [...this.state.tt_arrival, ""]
         })
     }
-
-    addDepart() {
+    addDepart(e) {
+        e.preventDefault();
         this.setState({
             tt_depart: [...this.state.tt_depart, ""]
         })
     }
 
-    handleChange(e,index){
-        this.state.tt_day[index] =e.target.value
-        this.setState({tt_day:this.state.tt_day})
+    addArrival_(e) {
+        e.preventDefault();
+        this.setState({
+            tt_arrival_: [...this.state.tt_arrival_, ""]
+        })
+    }
+    addDepart_(e) {
+        e.preventDefault();
+        this.setState({
+            tt_depart_: [...this.state.tt_depart_, ""]
+        })
     }
 
+
+    handleChange4(h,index){
+        h.preventDefault();
+        this.state.tt_arrival_[index] =h.target.value
+        this.setState({tt_arrival_:this.state.tt_arrival_})
+    }
+
+    handleChange3(i, index) {
+          i.preventDefault();
+          this.state.tt_depart_[index] = i.target.value
+          this.setState({
+              tt_depart_: this.state.tt_depart_
+          })
+      }
     handleChange1(f, index1) {
+        f.preventDefault();
         this.state.tt_arrival[index1] = f.target.value
         this.setState({
             tt_arrival: this.state.tt_arrival
         })
     }
-
     handleChange2(g, index2) {
+        g.preventDefault();
         this.state.tt_depart[index2] = g.target.value
         this.setState({
             tt_depart: this.state.tt_depart
@@ -81,30 +100,30 @@ export default class AddTTable extends Component {
     }
 
 
-
-
-    onSubmit(e) {
-
+    
+    addTable(e) {
         e.preventDefault();
-
         console.log(`Form Submitted:`);
         console.log(`route  number:${this.state.route_number}`);
-        console.log(`route  day:${this.state.tt_day}`);
+        console.log(`startpoint:${this.state.startpoint}`);
+        console.log(`endpoint:${this.state.endpoint}`);
         console.log(`arrival times:${this.state.tt_arrival}`);
         console.log(`dept times:${this.state.tt_depart}`);
+        console.log(`arrival times:${this.state.tt_arrival_}`);
+        console.log(`dept times:${this.state.tt_depart_}`);
         
         const newtt = {
-
-            rid: '',
+            tid: '',
             routeNumber: this.state.route_number,
-            dayArray: this.state.tt_day,
+            startpoint: this.state.startpoint,
+            endpoint: this.state.endpoint,
             arrivalArray: this.state.tt_arrival, 
             departArray: this.state.tt_depart,
+            arrivalArray_: this.state.tt_arrival_,
+            departArray_: this.state.tt_depart_,
             date: ''
-
             
         };
-
         axios.all([
                 axios.post('http://localhost:3001/api/ttables/register', newtt)
             ])
@@ -120,25 +139,29 @@ export default class AddTTable extends Component {
                     alert("failed !");
                 console.log(res);
 
-
             }));
 
 
-
-
         this.setState({
+            route_number: '' ,
+            startpoint:'',
+            tt_arrival:[],
+            tt_depart:[],
+            endpoint:'',
+            tt_arrival_:[],
+            tt_depart_:[]
             
         })
     }
 
+   
     render() {
         return ( 
             <div className="SignUpPage">
             <div className ="formContainer" >
                 <div className = "formWrapper">
                 <h3>Add Time Table</h3>
-                <form onSubmit={this.onSubmit}>
-
+                <form >
                 
                      <div className="form-group">
                         < label >Route Number: </label>
@@ -148,36 +171,19 @@ export default class AddTTable extends Component {
                                onChange={this.onChangeSubmissionRouteNumber}
                         />
                     </div>
-                    <div className="formContainerMain">
-                    <div className="formContainer1">
-
-                         {
-                             this.state.tt_day.map((day,index)=>{
-                                return (
-                                    <div className="Transit" key={index}>
-                                        <div className="inputTransit">                      
-                                        <input 
-                                            type = "text"
-                                            className = "form-control"
-                                            onChange={(e)=>this.handleChange(e,index)}
-                                            value={day}
-                                            style={{width:200}}
-                                            />  
-                                        </div>
-              
-                                    </div>    
-                                )
-
-                         })
-                         }
-
-                         <button onClick={(e)=>this.addTransit(e)} className="btn btn-primary">Add Days</button>
-                        <div style={{marginBottom:30}}></div>
-                        
+                        <div className="form-group">
+                        < label >Start: </label>
+                        < input type ="text"
+                               className="form-control"
+                               value={this.state.startpoint}
+                               onChange={this.onChangeSubmissionStartPoint}
+                        />
                     </div>
+      
+                    <div className="formContainerMain">
+                 
                     
-                             <div className="formContainer3">
-
+                    <div className="formContainer3">
                          {
                              this.state.tt_depart.map((depart,index2)=>{
                                 return (
@@ -194,18 +200,16 @@ export default class AddTTable extends Component {
               
                                     </div>    
                                 )
-
                          })
                          }
-
                          <button onClick={(g)=>this.addDepart(g)} className="btn btn-primary">Add Daily Dept.Times</button>
                     <div style={{marginBottom:30}}></div>
+
+
                     </div>
                         
-
                     
                     <div className="formContainer2">
-
                          {
                              this.state.tt_arrival.map((arrival,index1)=>{
                                 return (
@@ -222,23 +226,80 @@ export default class AddTTable extends Component {
               
                                     </div>    
                                 )
-
                          })
                          }
                         
                         <button onClick={(f)=>this.addArrival(f)} className="btn btn-primary">Add Daily Arriv.Times</button>
                     <div style={{marginBottom:30}}></div>
+                    </div>
+                        </div>
+
+
+                      <div className="form-group">
+                        < label >End : </label>
+                        < input type ="text"
+                               className="form-control"
+                               value={this.state.endpoint}
+                               onChange={this.onChangeSubmissionEndPoint}
+                        />
+                    </div>        
+                < div className = "formContainerMain1" >     
+                      <div className="formContainer3">
+                         {
+                             this.state.tt_depart_.map((depart_,index2)=>{
+                                return (
+                                    <div className="Transit" key={index2}>
+                                        <div className="inputTransit">                      
+                                        <input 
+                                            type = "text"
+                                            className = "form-control"
+                                            onChange={(i)=>this.handleChange3(i,index2)}
+                                            value={depart_}
+                                            style={{width:200}}
+                                            />  
+                                        </div>
+              
+                                    </div>    
+                                )
+                         })
+                         }
+                         <button onClick={(i)=>this.addDepart_(i)} className="btn btn-primary">Add Daily Dept.Times</button>
+                    <div style={{marginBottom:30}}></div>
+
 
                     </div>
-                
-
+                        
                     
-           
+                    <div className="formContainer2">
+                         {
+                             this.state.tt_arrival_.map((arrival_,index1)=>{
+                                return (
+                                    <div className="Transit" key={index1}>
+                                        <div className="inputTransit">                      
+                                        <input 
+                                            type = "text"
+                                            className = "form-control"
+                                            onChange={(h)=>this.handleChange4(h,index1)}
+                                            value={arrival_}
+                                            style={{width:200}}
+                                            />  
+                                        </div>
+              
+                                    </div>    
+                                )
+                         })
+                         }
+                        
+                        <button onClick={(h)=>this.addArrival_(h)} className="btn btn-primary">Add Daily Arriv.Times</button>
+                    <div style={{marginBottom:30}}></div>
+                    </div>
+                           
                     </div>
                     
                     <div className="form-group">
-                        <input type="submit" value = "Add Route" className="btn btn-success" />
-                    </div>
+                        <button onClick={this.addTable.bind(this)}  className="btn btn-success" style={{marginRight:25,width:175 }} >Add</button>
+                          </div>
+                          
                 </form>
                 </div>
             </div>

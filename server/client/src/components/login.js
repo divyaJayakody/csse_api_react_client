@@ -84,7 +84,7 @@ export default class Login extends Component {
         };
 
         axios.all([
-                axios.post('http://localhost:3001/api/users/login', newPassenger)
+                axios.post('http://localhost:3001/api/admins/login', newPassenger)
             ])
             .then(axios.spread((res) => {
                 if (res.status === 200){

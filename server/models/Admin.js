@@ -1,6 +1,6 @@
  const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema(
+const AdminSchema = new mongoose.Schema(
     {
         pid: {
             type: String,          
@@ -28,13 +28,10 @@ const UserSchema = new mongoose.Schema(
         telephone: {
             type: String,
              
-        },
-        accountBal:{
-            type:Number,
         }
     }
 );
 
-module.exports = User = mongoose.model('users', UserSchema);
+module.exports = Admin = mongoose.model('admins', AdminSchema);
 
 

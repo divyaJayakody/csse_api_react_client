@@ -11,7 +11,7 @@ var BackImage = require('../images/juan-encalada-6mcVaoGNz1w-unsplash.jpg');
 
 
 
-export default class AddBus extends Component {
+export default class UpdateBus extends Component {
 
     constructor(props) {
         super(props);
@@ -29,6 +29,22 @@ export default class AddBus extends Component {
 
     }
 
+    componentDidMount() {
+
+        console.log('getting http://localhost:3001/api/buses/' + this.props.match.params.id);
+        axios.get('http://localhost:3001/api/buses/' + this.props.match.params.id)
+            .then(res => {
+                this.setState({
+                    bus_regNo: res.data.busRegNo,
+                    bus_No: res.data.busNo,
+                    bus_noOfSeats: res.data.noOfSeats,
+                    bus_owner:res.data.oid
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
 
     onChangeSubmissionBusRegNo(e) {
         this.setState({
@@ -57,53 +73,6 @@ export default class AddBus extends Component {
      
  }
 
-    addBus(e) {
-
-        e.preventDefault();
-
-        console.log(`Form Submitted:`);
-        console.log(`Bus Reg No:${this.state.bus_regNo}`);
-        console.log(`Bus Number:${this.state.bus_No}`);
-        console.log(`Bus No of Seats:${this.state.bus_noOfSeats}`);
-        
-        const newBus= {
-
-            bid: '',
-            busRegNo: this.state.bus_regNo,
-            busNo: this.state.bus_No,
-            noOfSeats: this.state.noOfSeats,
-            oid: this.state.bus_owner
-        };
-
-        axios.all([
-                axios.post('http://localhost:3001/api/buses/register', newBus)
-            ])
-            .then(axios.spread((res) => {
-                if (res.status === 200) {
-                    alert("Bus added Succesfully!");
-                    this.props.history.push('/home');
-                } else if (res.status === 400)
-                    alert("failed");
-                else if (res.status === 401)
-                    alert("failed");
-                else
-                    alert("failed !");
-                console.log(res);
-
-
-            }));
-
-
-
-
-        this.setState({
-
-            bus_regNo: '',
-            bus_No: '',
-            bus_noOfSeats: '',
-            bus_owner:''
-        })
-    }
 
     updateBus(e) {
 
@@ -115,17 +84,16 @@ export default class AddBus extends Component {
         console.log(`Bus No of Seats:${this.state.bus_noOfSeats}`);
 
         const newBus = {
-
-            
+            bid:'',
             busRegNo: this.state.bus_regNo,
             busNo: this.state.bus_No,
             noOfSeats: this.state.bus_noOfSeats,
-            oid:this.state.bus_owner
-            
+            oid:this.state.bus_owner  
         };
-
+            console.log(newBus)
         axios.all([
-                axios.post('http://localhost:3001/api/buses/update', newBus)
+                axios.post('http://localhost:3001/api/buses/update/' + this.props.match.params.id, newBus)
+                
             ])
             .then(axios.spread((res) => {
                 if (res.status === 200) {
@@ -138,6 +106,7 @@ export default class AddBus extends Component {
                 else
                     alert("failed !");
                 console.log(res);
+                this.props.history.push('/buses/view');
 
 
             }));
@@ -170,24 +139,8 @@ export default class AddBus extends Component {
         axios.all([
                 axios.delete('http://localhost:3001/api/buses/remove/'+id+'')
             ])
-            .then(axios.spread((res) => {
-                if (res.status === 200) {
-                    alert("Bus deleted Succesfully!");
-                    this.props.history.push('/buses/view');
-                } else if (res.status === 400)
-                    alert("failed");
-                else if (res.status === 401)
-                    alert("failed");
-                else
-                    alert("failed !");
-                console.log(res);
-
-
-            }));
-
-
-
-
+            alert("Bus deleted Succesfully!");
+            this.props.history.push('/home');
         this.setState({
 
             bus_regNo: '',
@@ -203,7 +156,7 @@ export default class AddBus extends Component {
             <div className="SignUpPage">
             <div className ="formContainer" >
                 <div className = "formWrapper">
-                <h3>Add Bus</h3>
+                <h3>Manage Buses</h3>
                 <form >
 
                     <div className="form-group">
@@ -240,13 +193,11 @@ export default class AddBus extends Component {
                         />
                     </div>
                     <div className="form-group">
-                       <button onClick={this.addBus.bind(this)}  className="btn btn-success" style={{marginRight:25,width:175 }} >Add</button>
-                        <button onClick={this.updateBus.bind(this)}  className="btn btn-success" style={{marginLeft:25,width:175}}>Delete</button>
+                         <button onClick={this.updateBus.bind(this)}  className="btn btn-success" style={{marginLeft:25,width:175}}>Update</button>
+                         <button onClick={this.deleteBus.bind(this)}  className="btn btn-danger" style={{marginLeft:25,width:175}}>Delete</button>
                     
                     </div>
                     <br/>
-                    <button onClick={this.deleteBus.bind(this)}  className="btn btn-danger" style={{marginLeft:25,width:175}}>Delete</button>
-                    
                 </form>
                 </div>
             </div>

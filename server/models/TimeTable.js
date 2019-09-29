@@ -4,31 +4,31 @@ const TTableSchema = new mongoose.Schema({
 
 
     tid: {
-        type: String,
+        type: String,   required :true
 
     },
     routeNumber: {
-        type: String,
+        type: String,   required :true
 
     },
      startpoint: {
-         type: String,
+         type: String,   required :true
 
      },
     startArrivalArray: [{
-        type: String,
+        type: String,   
 
     }],
     startDepartArray: [{
         type: String
     }],
     endpoint: {
-          type: String,
+          type: String,   required :true
 
     },
 
     endArrivalArray: [{
-        type: String,
+        type: String,   
 
     }],
     endDepartArray: [{

@@ -4,19 +4,19 @@ const RouteSchema = new mongoose.Schema({
 
 
     rid: {
-         type: String,
+         type: String,   required :true
 
     },
     startpoint: {
-        type: String,
+        type: String,   required :true
 
     },
     endpoint: {
-        type: String,
+        type: String,   required :true
 
     },
     routeNumber: {
-        type: String,
+        type: String,   required :true
 
     },
      transitArray: [{

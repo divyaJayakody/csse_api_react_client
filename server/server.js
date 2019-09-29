@@ -19,6 +19,7 @@ const busRoute = require("./routes/api/busRoute");
 const fareRoute = require("./routes/api/fareRoute");
 const routeRoute = require("./routes/api/routeRoute");
 const timeTableRoute = require("./routes/api/timeTableRoute");
+const generalRoute = require("./routes/api/generalRoute");
 
 
 //middleware
@@ -66,6 +67,7 @@ app.use("/api/buses", busRoute);
 app.use("/api/fares", fareRoute);
 app.use("/api/routes", routeRoute);
 app.use("/api/ttables", timeTableRoute);
+app.use("/api/general", generalRoute);
 
 
 app.get('*', (req, res) => {

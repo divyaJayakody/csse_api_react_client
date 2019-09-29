@@ -9,80 +9,39 @@ import {
 } from 'react'
 import axios from 'axios';
 import '../App.css';
-
-
 var BackImage = require('../images/juan-encalada-6mcVaoGNz1w-unsplash.jpg');
-
-
-
 export default class Login extends Component {
-
     constructor(props) {
         super(props);
-
         this.onChangeSubmissionPassEmail = this.onChangeSubmissionPassEmail.bind(this);
         this.onChangeSubmissionPassPassword = this.onChangeSubmissionPassPassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
         this.state = {
            
             pass_email: '',
             pass_password: ''
     
         }
-
     }
-
-
-
     onChangeSubmissionPassEmail(e) {
         this.setState({
-
             pass_email: e.target.value
         });
     }
     onChangeSubmissionPassPassword(e) {
         this.setState({
-
             pass_password: e.target.value
         });
     }
-
-
-
     onSubmit(e) {
-
         e.preventDefault();
-
-        /*
-         const dateTime = function timeStamp() {
-            var now = new Date();
-          var date = [ now.getMonth() + 1, now.getDate(), now.getFullYear() ];
-         var time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];
-            var suffix = ( time[0] < 12 ) ? "AM" : "PM";
-            time[0] = ( time[0] < 12 ) ? time[0] : time[0] - 12;
-          time[0] = time[0] || 12;
-            for ( var i = 1; i < 3; i++ ) {
-                if ( time[i] < 10 ) {
-                    time[i] = "0" + time[i];
-                }
-            }
-            return date.join("/") + " " + time.join(":") + " " + suffix;
-        };
-      
-
-        const now = dateTime();
-        */
         console.log(`Form Submitted:`);
         console.log(`Passenger  email:${this.state.pass_email}`);
         console.log(`Passenger  password:${this.state.pass_password}`);
-
         const newPassenger = {
-
             email: this.state.pass_email,
             password: this.state.pass_password
         };
-
         axios.all([
                 axios.post('http://localhost:3001/api/admins/login', newPassenger)
             ])
@@ -98,21 +57,12 @@ export default class Login extends Component {
                 else
                     alert("failed !");
                 console.log(res);
-
-
             }));
-
-
-
-
         this.setState({
-
             pass_email: '',
             pass_password: ''
-
         })
     }
-
     render(){
         return(
             < div className = "LoginPage"
@@ -130,7 +80,6 @@ export default class Login extends Component {
                 <div className = "formWrapper">
                 <h3>Login</h3>
                 <form onSubmit={this.onSubmit}>
-
                     <div className="form-group">
                         < label > Email: </label>
                         <input type ="text"
@@ -163,7 +112,6 @@ export default class Login extends Component {
             </div>
             </div>
   
-
         
         
         )

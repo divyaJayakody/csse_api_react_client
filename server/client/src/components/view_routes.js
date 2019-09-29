@@ -9,7 +9,7 @@ const  Route1 =props=>(
         <td>{props.route.startpoint}</td>
         <td>{props.route.endpoint}</td>
         <td>{props.route.routeNumber}</td>
-        <td>{props.route.transitArray}</td>
+        <td>{props.route.transitArray.join(" ,  ")}</td>
         < td > 
             < Link to = {
                 "/routes/update/" + props.route._id} >
@@ -28,8 +28,7 @@ export default class RouteList extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            routes:[],
-            transit:[]
+            routes:[]
         };
     
     }
@@ -37,8 +36,7 @@ export default class RouteList extends Component{
         axios.get('http://localhost:3001/api/routes')
             .then(res=>{
                 this.setState({
-                            routes: res.data,
-                            transits: res.data.transitArray
+                            routes: res.data
                 });
                 
             })
@@ -51,11 +49,7 @@ export default class RouteList extends Component{
             return <Route1 route={currentRoute} key={i}/>
         })
     }
-    transitList(){
-        return this.state.transits.map(function(currentTransit,i){
-            return <Transit transit={currentTransit} key={i}/>
-        })
-    }
+
     render(){
         return(
             <div className="tableList1" style={{marginTop :50,paddingTop:25}}>
@@ -68,6 +62,7 @@ export default class RouteList extends Component{
                         <th>Start Point </th>
                         <th>End Point</th>
                         <th>Route Number</th>
+                        <th>Transits</th>
                     </tr>
                     </thead>
                     <tbody>

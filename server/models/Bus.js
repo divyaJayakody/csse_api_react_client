@@ -2,23 +2,23 @@
 
  const BusSchema = new mongoose.Schema({
      bid: {
-         type: String,
+         type: String,   
 
      },
      busRegNo: {
-         type: String,
+         type: String,   
 
      },
      busNo: {
-         type: String,
+         type: String,   
 
      },
      noOfSeats: {
-         type: String,
+         type: String,  
 
      },
      oid:{
-        type: String,
+        type: String,   
      }
  });
 

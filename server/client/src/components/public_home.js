@@ -4,8 +4,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import '../App.css';
-
+//import '../App.css';
+import '../App-copy.css';
 
 
 
@@ -38,7 +38,6 @@ import UpdateFares from "./update_fare"
 import UpdateRoute from "./update_route"
 import UpdateTTable from "./update_timetables"
 
-import PublicView from "./public_home"
 import Contact from "./contact"
 import Login from "./login";
 
@@ -56,7 +55,7 @@ function Home() {
      < div className = "Main1"
      style = {
        {
-         backgroundImage: 'url(' + BackImage + ')',
+         //backgroundImage: 'url(' + BackImage + ')',
          backgroundPosition: 'center',
          backgroundSize: 'cover',
          backgroundRepeat: 'no-repeat',
@@ -79,19 +78,25 @@ function Home() {
          < div className = "l1Top" > < h2 > Public Transportation System </h2></div >
          < div className = "l1Bottom" >
            <nav className="navbar1">
-                        < div class = "dropdown1" >          
-                                  <a><Link to = "/ttables/view" > Home </Link> </a>
-                        </ div>    
-                                  
-                        < div class = "dropdown1" >
-                              <button class="dropbtn1">Finance<i class="fa fa-caret-down"></i></button>
-                              <div class="dropdown-content1">
-                                  <a><Link to = "/fares/register" > Add Fares </Link> </a>
-                                   <a><Link to = "/revenue/report" > View Reports </Link> </a>
-                                  <a><Link to = "/fares/view" > View Fares </Link> </a>
-                                
-                                </div>
-                        </ div>                             
+                
+                                    < a > < Link to = "/menu"
+                                    className = "nav-link" > Home </Link>
+                                      </a>                  
+                                    < a > < Link to = "/about"
+                                    className = "nav-link" > About </Link>
+                                      </a>
+                                 
+             
+                                    < a > < Link to = "/contact"
+                                    className = "nav-link" > Contact Us </Link>
+                                      </a>
+                                      
+                 
+                                    < a > < Link to = "/reload"
+                                    className = "nav-link" > Inquery </Link>
+                                      </a>  
+
+                                               
                             
                       < div class = "dropdown1" >
                               <button class="dropbtn1">Routes<i class="fa fa-caret-down"></i></button>
@@ -174,7 +179,17 @@ function Home() {
           < div className = "main-nav" >
                     <div className="collpase navbar-collapse">
                       <ul className="navbar-nav mr-auto">  
-                                  
+                                    <li className="navbar-item2"><Link to="/menu" className="nav-link">  Home</Link>
+                                      </li>
+                                    < li className = "navbar-item2" > < Link to = "/about"
+                                    className = "nav-link" > About </Link>
+                                      </li>
+                                    < li className = "navbar-item2" > < Link to = "/contact"
+                                    className = "nav-link" > Contact Us </Link>
+                                      </li>
+                                    <li className = "navbar-item2"><Link to="/inquery" 
+                                    className="nav-link">  Inquery</Link>
+                                      </li>
 
                               < div class = "dropdown" >
                               <button class="dropbtn">Finance</button>
@@ -208,9 +223,7 @@ function Home() {
                                   <li className="navbar-item2">
                                   <Link to="/ttables/view" className="nav-link">View TimeTables</Link>
                                      </li>
-                                  <li className="navbar-item2">
-                                  <Link to="/ttables/reports" className="nav-link">View Reports</Link>
-                                     </li>
+                                
                                 </div>
                           </div> 
 
@@ -218,22 +231,11 @@ function Home() {
                              < div class = "dropdown" >
                               <button class="dropbtn">Buses</button>
                                 <div class="dropdown-content">
-                                  <li className="navbar-item2">
-                                  <Link to="/buses/register" className="nav-link">Add Buses</Link>
-                                    </li>
-                                  <li className="navbar-item2">
-                                  <Link to="/buses/track" className="nav-link">Track Buses</Link>
-                                     </li>
+                               
                                   <li className="navbar-item2">
                                   <Link to="/buses/view" className="nav-link">View Buses</Link>
                                      </li>
-                                   <li className="navbar-item2">
-                                  <Link to="/busOwners/register" className="nav-link">Add Bus Owners</Link>
-                                     </li>
-
-                                  <li className="navbar-item2">
-                                  <Link to="/drivers/register" className="nav-link">Add drivers</Link>
-                                     </li>   
+                                
                                 </div>
                           </div>
                       </ul>
@@ -241,26 +243,8 @@ function Home() {
           </div>
           < div className = "main-body">
         < div className = "container" >
-              <Route path="/admins/register" exact component={AddPassenger}/>
-              <Route path="/drivers/register" exact component={AddDriver}/>
-              <Route path = "/busOwners/register" exact component={AddBusOwner} />
-              <Route path = "/buses/register" exact component={AddBus}/>
-              <Route path = "/routes/register" exact component={AddRoute}/>
-              <Route path = "/ttables/register" exact component={AddTTable}/>
-               <Route path = "/fares/register" exact component={AddFare}/>
-
-              <Route path= "/admins/update/:id" exact component={AddPassenger}/>
-              <Route path= "/drivers/update/:id" exact component={UpdateDrivers}/>
-              <Route path = "/owners/update/:id/:oid" exact component={UpdateOwners} />
-              <Route path = "/buses/update/:id/:bid" exact component={UpdateBus}/>
-              <Route path = "/routes/update/:id" exact component={UpdateRoute}/>
-              <Route path = "/ttables/update/:id" exact component={UpdateTTable}/>
-              <Route path = "/fares/update/:id" exact component={UpdateFares}/>
-
-              <Route path = "/buses/view" exact component={BusList}/>
-              <Route path = "/owners/view" exact component={OwnerList}/>
-              <Route path = "/drivers/view" exact component={DriverList}/>
-              <Route path = "/fares/view" exact component={FareList}/>
+          
+             <Route path = "/fares/view" exact component={FareList}/>
               <Route path = "/routes/view" exact component={RouteList}/>
               <Route path = "/ttables/view" exact component={TTableList}/>
 

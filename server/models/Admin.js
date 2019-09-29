@@ -3,18 +3,18 @@
 const AdminSchema = new mongoose.Schema(
     {
         pid: {
-            type: String,          
+            type: String,   required :true        
         },
         name: {
-            type : String,
+            type : String,   required :true
             
         },
         email: {
-            type : String,
+            type : String,   required :true
             
         },
         password: {
-            type : String,
+            type : String,   required :true
            
         },
         date: {
@@ -22,11 +22,11 @@ const AdminSchema = new mongoose.Schema(
             default : Date.now()
         },
         nic: {
-            type: String,
+            type: String,   required :true
             
         },
         telephone: {
-            type: String,
+            type: String,   required :true
              
         }
     }

@@ -5,28 +5,25 @@
   border: 1px solid rgb(46, 37, 37);
   color:white;
 }
-
 .LoginPage {
   background-image: 'url('+ BackImage + ')';
   background-position: 'center';
   background-size: 'cover';
   background-repeat: 'no-repeat';
 }
-
 .SignUpPage {
   background-image: 'url('+ BackImage + ')';
   background-position: 'center';
   background-size: 'cover';
   background-repeat: 'no-repeat';
 }
-
 .Main1 {
-          background-image: 'url('+ BackImage + ')';
+         /* background-image: 'url('+ BackImage + ')';*/
+          background-color: rgb(75, 104, 172);
           background-position: 'center';
           background-size:'cover';
           background-repeat: 'no-repeat';
 }
-
 .h1,
 .h2,
 .h3,
@@ -43,9 +40,7 @@ h6 {
   font-weight: 500;
   line-height: 1.2;
 }
-
 /* Level 1 header  */
-
 .level1 {
  
   display: flex;
@@ -54,51 +49,42 @@ h6 {
   text-decoration: none;
   width: 100%;
   height: 150px;
-
   margin-bottom: 0px;
   padding: 0px;
-  color: white;
+  color :black;
 }
-
 
 /* level1 > left block*/
 .l1left {
   flex: 0 0 20%;
   border: solid 0px;
   text-align: center;
-   border: 3px solid rgb(43, 38, 38);
-  background-color: rgba(0, 0, 0, 0.5);
+   border: 3px solid rgb(10, 9, 9);
+ background-color: rgba(0, 0, 0, 0.3);
 }
 /* level1 > center block*/
-
 .l1center {
   flex: 0 0 60%;
-  color:white;
+  
   text-align: center;
   padding: 0px;
   margin: 0px;
-   background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgb(43, 38, 38);
+  border: 3px solid rgb(10, 9, 9);
+  background-color: white
 }
-
 /* level1 > center > top & bottom */
-
 
 .l1Top{
   height:58%;
-   background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
    
-
 }
 .l1Bottom {
-   background-color: rgba(0, 0, 0, 0.5);
-
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .l1rightBottom{
-  background-color: rgba(0, 0, 0, 0.5);
-
+ background-color: rgba(0, 0, 0, 0.3);
 }
-
 /*level1 > right block*/
 .l1right{
   flex: 0 0 20%;
@@ -106,98 +92,80 @@ h6 {
   padding: 0px;
   margin:0px;
   border :1px solid rgb(43, 38, 38);
-  color:white;
-
 }
-
 .l1rightTop {
   height: 60%;
-  background-color: rgba(0, 0, 0, 0.5);
+ background-color: rgba(0, 0, 0, 0.3);
    border :1px solid rgb(43, 38, 38);
-
 }
-
 .lright1Bottom {
-  background-color: rgba(0, 0, 0, 0.5);
+ background-color: rgba(0, 0, 0, 0.3);
    border :1px solid rgb(43, 38, 38);
 }
-
 /*level 2*/
-
 .level2 {
 display: flex;
   padding:0px;
   margin:0px;
   min-height: 600px;
 
-
 }
-
 /* level 2 side nav */
 .main-nav{
     flex-basis: 20%;
     border: solid;
     padding:0px;
     margin:0px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 3px solid rgb(10, 9, 9);
+    color: white;
     
-
 }
-
 /* level2 > main body */
-
 /*imported components */
 .formContainer {
   
-  color :white;
+  color :black;
   width: 50%;
   margin: 0 auto;
   width: 400px;
   
 }
-
 .formContainerMain {
   display: flex;
-  color: white;
+  color :black;
   width: 100%;
   width: 400px;
   
   
 }
-
 .formContainerMain1 {
   display: flex;
-  color: white;
+  color :black;
   width: 100%;
   width: 400px;
  
-
 }
-
 
 .formContainer2{
   flex: 0 0 50.0%;
   border:1px solid black;
-  background-color: rgba(0, 0, 0, 0.3);
+ background-color: rgba(0, 0, 0, 0.3);
 }
-
 
 .formContainer3 {
   flex: 0 0 50.0%;
   border:1px solid black;
-  background-color: rgba(0, 0, 0, 0.3);
+ background-color: rgba(0, 0, 0, 0.3);
 }
-
 .errorMsg {
   color: #cc0000;
   margin-bottom: 12px;
 }
-
 .sucessMsg {
   color: #6B8E23;
   margin-bottom: 10px;
 }
-
 .Transit{
   display: flex;
   padding: 0px;
@@ -209,55 +177,49 @@ display: flex;
     flex: 0 0 70%;
     padding:0;
     margin:0;
-
  }
 .inputTransitButton{
     flex: 0 0 25%;
 }
-
 .btn-primary{
   width :200px}
-
 li.navbar-item2 {
-
   position:relative;
   display: block;
   border: 1px solid rgb(43, 38, 38);
   margin-left: 1px;
   margin-bottom: 1px;
-  background-color: rgba(0, 0, 0, 0.5);
+ background-color: rgba(0, 0, 0, 0.3);
   text-align: center;
-  color :white;
+  color :black;
   
 }
-
 /*without hovering*/
 li a {
   color:red;
   border: 1px solid rgb(43, 38, 38);
-  background-color: rgba(0, 0, 0, 0.3);
+ background-color: rgba(0, 0, 0, 0.3);
   text-decoration: none;
+  color: white;
 }
-
 /*level 1 right top  navigation*/
 .nav-link  {
   width:100%;
- color:white;
+ color :black;
  text-decoration:none ;
+ 
 }
-
 .nav-link:hover {
   width: 100%;
-  color: white;
+  color :black;
   text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.1);
+ background-color: rgba(0, 0, 0, 0.3);
 }
-
 
 /*level 1 center navigation*/
 .nav-link1 {
     border: 1px solid rgb(43, 38, 38);
-    color: white;
+    color :black;
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -267,22 +229,19 @@ li a {
     padding-top: 10px;
     text-align: left;
 }
-
 /* level 2 side nav*/
 a:active {
     background-color: rgba(144, 200, 238, 0.342);
-    color:white;
+    color :black;
     TEXT-DECORATION: none;
 }
-
 /* level 2 main body */
 .main-body {
-  flex: 0 0 75%;
+  flex: 0 0 80%;
     padding:0px;
     margin:0px;
-
+       border: 3px solid rgb(10, 9, 9);
 }
-
 .level3{
   text-decoration: none;
   width: 100%;
@@ -291,13 +250,11 @@ a:active {
     padding:0px;
     margin:0px;
 
-
 }
-
 /*side menu drop button*/
 .dropbtn {
-  background-color: rgba(0, 0, 0, 0.3);
-  color: white;
+ background-color: rgba(0, 0, 0, 0.3);
+  color :white;
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -307,63 +264,56 @@ a:active {
   padding-top: 10px;
   text-align: center;
 }
-
 .dropdown {
   position: relative;
   display: inline-block;
   border: 1px solid rgb(43, 38, 38);
+   color :white;
 }
-
 .dropdown-content {
   display: none;
   position: relative;
-  background-color: rgba(0, 0, 0, 0.9);
+ background-color: rgba(0, 0, 0, 0.3);
+  color :white;
   z-index: 1;
   width:100%;
   
 }
-
 /* Links inside the dropdown */
 .dropdown-content a {
-  color: white;
+color :white;
   text-decoration: none;
   display: block;
    width:100%;
    text-align: left;
    height:60px;
 }
-
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: rgba(0, 0, 0, 0.9);
+ background-color: rgba(0, 0, 0, 0.3);
   text-decoration: none;
   
 }
-
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: rgba(144, 200, 238, 0.342);
 }
-
 /*nav bar top drop button*/
-
 .navbar1 {
   overflow: hidden;
-   background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
    height:62px;
    margin:0px;
    padding:0px;
 }
-
 .navbar1 a {
   float: left;
   font-size: 16px;
-  color: white;
+  color :black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -373,18 +323,15 @@ a:active {
   width :100px;
   height:62px;
 }
-
 .dropdown1 {
   float: left;
   overflow: hidden;
-  color: white;
 }
-
 .dropdown1 .dropbtn1 {
   font-size: 16px;
   border: none;
   outline: none;
-  color: white;
+  color :black;
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
@@ -392,58 +339,45 @@ a:active {
   width :100px;
   height:63px;
 }
-
 .navbar1 a:hover{
-
 background-color:rgba(0, 0, 0, 0.1);
-color: white;
 }
 .dropdown1:hover .dropbtn1 {
   background-color:rgba(0, 0, 0, 0.1);
-  color: white;
 }
-
 .dropdown-content1 {
   display: none;
   position: absolute;
-    color: white;
   background-color:rgba(0, 0, 0, 0.3);
   min-width: 100px;
   z-index: 1;
   width :100px;
   
 }
-
 .dropdown-content1 a {
   float: none;
-  color: white;
+  color: black;
   text-decoration: none;
   display: block;
   text-align: center;
-  padding: 0px;
-  width: 100px;
-  height: 62px;
+  padding:0px;
+  width :100px;
+  height:62px;
 }
-
 .dropdown-content1 a:hover {
-  color: white;
-  background-color: black;
-  margin: 0px;
+  color :black;
+  background-color:rgba(0, 0, 0, 0.4);
+  margin:0px;
   text-decoration: none;
-
 }
-
 .dropdown1:hover .dropdown-content1 {
   display: block;
-   color: white;
 }
-
 
 #wrapper #tile-wrapper,
 #wrapper.open #container3 {
   display: block;
 }
-
 #wrapper.open #tile-wrapper,
 #wrapper #container3 {
   display: none;
@@ -456,9 +390,7 @@ color: white;
   overflow:hidden;
   margin-left:0px;
 
-
 }
-
 .imgTile{
      background-color:rgba(0, 0, 0, 0.4);
     height:150px;
@@ -471,60 +403,48 @@ color: white;
 }
  .imgTile +.imgTile{
    margin-left: 30px;
-
  }
-
  .imgTile:nth-child(5n+1){
    margin-left: 0;
-
  }
-
 .tableList{
-  color:white;
+  color :black;
    background-color:rgba(0, 0, 0, 0.4);
   border: 1px solid #ddd;
   border-radius: 20px;
   padding: 20px;
 
-
 }
-
 table {
-  color:white;
+  color :black;
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
   border: 1px solid white;
-  background-color: white;
+  background-color :white;
 }
-
 th,
 td {
   text-align: left;
   padding: 16px;
-  background-color: white;
+  background-color :white;
 }
-
 tr:nth-child(even) {
-  background-color: white;
+  background-color :white;
 }
-
 tr {
-  background-color: white;
+  background-color :white;
 }
-
 .l1rightBottom .search-container {
   float: right;
  
 }
-
 .l1rightBottom input[type=text] {
   padding: 0px;
   margin: 0px;
   font-size: 17px;
   
 }
-
 .l1rightBottom .search-container button {
   float: right;
   padding: 0px;
@@ -534,16 +454,13 @@ tr {
   border: none;
   cursor: pointer;
 }
-
 .l1rightBottom .search-container button:hover {
   background: #ccc;
 }
-
 @media screen and (max-width: 600px) {
   .l1rightBottom .search-container {
     float: none;
   }
-
   .l1rightBottom a,
   .searchText,
   .l1rightBottom .search-container button {
@@ -554,11 +471,9 @@ tr {
     margin: 0;
     padding: 14px;
   }
-
   .l1rightBottom input[type=text] {
     border: 1px solid #ccc;
   }
-
 }
 @keyframes App-logo-spin {
   from {

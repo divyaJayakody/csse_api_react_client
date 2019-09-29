@@ -4,31 +4,31 @@ const DriverSchema = new mongoose.Schema(
     {
 
          did: {
-             type: String,
+             type: String,   required :true
 
          },
         name: {
-            type : String,
+            type : String,   required :true
             
         },
         address: {
-            type : String,
+            type : String,   required :true
             
         },
         age: {
-            type : String,
+            type : String,   required :true
            
         },
         nic: {
-            type: String,
+            type: String,   required :true
             
         },
         telephone: {
-            type: String,
+            type: String,   required :true
              
         },
         license:{
-            type: String,
+            type: String,   required :true
         }
     }
 );

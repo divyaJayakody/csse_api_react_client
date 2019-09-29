@@ -49,7 +49,7 @@ export default class Contact extends Component {
             message: this.state.message,
         };
         axios.all([
-                axios.post('http://localhost:3001/api/contact', contact)
+                axios.post('http://localhost:3001/api/general/contact', contact)
             ])
             .then(axios.spread((res) => {
                 if (res.status === 200) {

@@ -4,19 +4,19 @@
 
  const FareSchema = new mongoose.Schema({
     fid: {
-        type: String,
+        type: String,   required :true
 
     },
      routeNo: {
-         type: String,
+         type: String,   required :true
 
      },
      distance: {
-         type: String,
+         type: String,   required :true
 
      },
      fixedFare: {
-         type: String,
+         type: String,   required :true
 
      }
 

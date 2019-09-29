@@ -4,25 +4,25 @@
 
 
      oid: {
-         type: String,
+         type: String,   required :true
 
      },
      name: {
-         type: String,
+         type: String,   required :true
 
      },
      address: {
-         type: String,
+         type: String,   required :true
 
      },
 
      telephone: {
-         type: String,
+         type: String,   required :true
 
      },
 
     noOfBuses: {
-         type: String,
+         type: String,   required :true
 
      }
 

@@ -33,6 +33,7 @@ ttableRouter.post("/register", (req, res) => {
 
 
     const newTtable = new TimeTable({
+
         tid: genTid,
         routeNumber: req.body.routeNumber,
         startpoint:req.body.startpoint,
@@ -87,12 +88,17 @@ ttableRouter.route('/update/:id').post(function (req, res) {
         if (!ttable) {
             res.status(404).send("Data is not found");
         } else {
+        
 
             ttable.did = ttable.did;
             ttable.routeNumber = req.body.routeNumber;
-            ttable.dayArray = req.body.dayArray;
-            ttable.arrivalArray = req.body.arrivalArray;
-            ttable.departArray = req.body.departArray;
+            ttable.startpoint = req.body.startpoint;
+            ttable.endpoint = req.body.endpoint;
+            ttable.startArrivalArray = req.body.startArrivalArray;
+            ttable.startDepartArray = req.body.startDepartArray;
+             ttable.endArrivalArray = req.body.endArrivalArray;
+             ttable.endDepartArray = req.body.endDepartArray;
+            
 
             ttable.save().then(ttable => {
                     res.status(200).json('Route updated!');
@@ -117,7 +123,6 @@ ttableRouter.route('/remove/:id').delete(function (req, res) {
         if (err) {
             console.log(err);
         }
-        res.status(200);
 
     });
 });

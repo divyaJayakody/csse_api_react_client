@@ -21,9 +21,20 @@ export default class AddBusOwner extends Component {
             own_name: '',
             own_address: '',
             own_telephone: '',
-            own_noOfBuses: ''
+            own_noOfBuses: '',
+            fields:{},
+            errors:{}
             
         }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+       handleChange(e){
+        let fields = this.state.fields;
+        fields[e.target.name] = e.target.value;
+        this.setState({
+            fields
+        });
     }
 
     onChangeSubmissionOwnName(e) {
@@ -135,7 +146,7 @@ export default class AddBusOwner extends Component {
                 <form >
                     <div className="form-group">
                         <label>Name :</label>
-                        <input type ="text"
+                        <input type = "text"  required
                                className="form-control"
                                value={this.state.own_name}
                                onChange={this.onChangeSubmissionOwnName}
@@ -143,7 +154,7 @@ export default class AddBusOwner extends Component {
                     </div>
                     <div className="form-group">
                         < label > Address: </label>
-                        <input type ="text"
+                        <input type = "text"  required
                                className="form-control"
                                value={this.state.own_address}
                                onChange={this.onChangeSubmissionOwnAddress}
@@ -151,7 +162,7 @@ export default class AddBusOwner extends Component {
                     </div>
                      <div className="form-group">
                         < label >Telephone: </label>
-                        < input type ="text"
+                        < input type = "text"  required
                                className="form-control"
                                value={this.state.own_telephone}
                                onChange={this.onChangeSubmissionOwnTelephone}
@@ -159,7 +170,7 @@ export default class AddBusOwner extends Component {
                     </div>
                     <div className="form-group">
                         <label>No Of Buses :</label>
-                        <input type ="text"
+                        <input type = "text"  required
                                className="form-control"
                                value={this.state.own_noOfBuses}
                                onChange={this.onChangeSubmissionOwnNoOfBuses}
